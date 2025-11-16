@@ -15,8 +15,5 @@
     "moodle",
     "bash-scripting",
     "system-maintenance"
-  ],
-  "commands": "./commands",
-  "agents": "./agents",
-  "skills": "./skills"
+  ]
 }

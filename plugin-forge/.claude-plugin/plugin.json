@@ -16,8 +16,5 @@
     "meta-plugin",
     "claude-code",
     "developer-tools"
-  ],
-  "commands": "./commands",
-  "agents": "./agents",
-  "skills": "./skills"
+  ]
 }

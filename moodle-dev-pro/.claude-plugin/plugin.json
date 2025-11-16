@@ -20,9 +20,5 @@
     "psr-12",
     "wcag",
     "mobile-app"
-  ],
-  "commands": "./commands",
-  "agents": "./agents",
-  "skills": "./skills",
-  "hooks": "./hooks/hooks.json"
+  ]
 }
