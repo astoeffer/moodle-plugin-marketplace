@@ -1,0 +1,33 @@
+{
+  "extraKnownMarketplaces": {
+    "anthropics-claude-code": {
+      "source": { "source": "github", "repo": "anthropics/claude-code" }
+    },
+    "anthropics-skills": {
+      "source": { "source": "github", "repo": "anthropics/skills" }
+    },
+    "wshobson-agents": {
+      "source": { "source": "github", "repo": "wshobson/agents" }
+    },
+    "diegocconsolini-claudeskillcollection": {
+      "source": { "source": "github", "repo": "diegocconsolini/ClaudeSkillCollection" }
+    },
+    "astoeffer-plugins": {
+      "source": { "source": "github", "repo": "astoeffer/plugin-marketplace" }
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Bash(php:*)",
+      "Bash(composer:*)",
+      "Bash(git:*)",
+      "Bash(docker:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(python:*)",
+      "Bash(make:*)",
+      "Bash(pytest:*)",
+      "Bash(vendor/bin/*)"
+    ]
+  }
+}

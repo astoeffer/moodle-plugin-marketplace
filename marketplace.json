@@ -28,15 +28,13 @@
     {
       "name": "moodle-dev-pro",
       "version": "2.0.0",
-      "description": "Moodle plugin development with PSR-12, accessibility, and AI subsystem support",
+      "description": "Comprehensive Moodle plugin development with PSR-12, accessibility, AI subsystem, Docker multi-version support",
       "path": "plugins/moodle-dev-pro",
-      "keywords": ["moodle", "php", "lms", "accessibility", "ai"],
+      "keywords": ["moodle", "php", "lms", "accessibility", "ai", "psr-12", "wcag"],
       "contexts": ["moodle-core", "moodle-ai", "accessibility"],
-      "skills": [
-        "moodle-standards",
-        "accessibility-audit",
-        "moodle-ai-integration"
-      ]
+      "agents": ["moodle-architect", "docker-ops", "moodle-a11y"],
+      "commands": ["implement", "troubleshoot", "git", "task", "test"],
+      "skills": ["psr12-moodle", "wcag-validator", "moodle-standards", "accessibility-audit", "moodle-ai-integration"]
     },
     {
       "name": "ai-app-dev",
@@ -45,10 +43,7 @@
       "path": "plugins/ai-app-dev",
       "keywords": ["ai", "llm", "agents", "pocketflow", "python", "chatbot", "gpu"],
       "contexts": ["pocketflow", "frontend", "dgx-h100"],
-      "skills": [
-        "pocketflow-patterns",
-        "chatbot-integration"
-      ]
+      "skills": ["pocketflow-patterns", "chatbot-integration"]
     },
     {
       "name": "moodle-admin",
@@ -57,10 +52,26 @@
       "path": "plugins/moodle-admin",
       "keywords": ["moodle", "admin", "webservices", "reporting", "analytics"],
       "contexts": ["moodle-core", "moodle-admin"],
-      "skills": [
-        "webservice-patterns",
-        "reporting-analytics"
-      ]
+      "skills": ["webservice-patterns", "reporting-analytics"]
+    },
+    {
+      "name": "server-ops",
+      "version": "1.0.0",
+      "description": "Server administration, Docker automation, monitoring for Moodle environments",
+      "path": "plugins/server-ops",
+      "keywords": ["server", "docker", "monitoring", "devops", "moodle"],
+      "agents": ["server-admin"],
+      "commands": ["logs", "monitor", "moodle-cache"],
+      "skills": ["defensive-bash"]
+    },
+    {
+      "name": "plugin-forge",
+      "version": "1.0.0",
+      "description": "Meta-plugin for creating, validating, and testing Claude Code plugins",
+      "path": "plugins/plugin-forge",
+      "keywords": ["plugin", "scaffolding", "validation", "development"],
+      "agents": ["plugin-architect"],
+      "commands": ["plugin-new", "plugin-validate"]
     }
   ],
   "contexts": {

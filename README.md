@@ -7,6 +7,9 @@ Token-efficient, context-specific configuration for learning developers.
 ```
 ~/.claude/
 ├── CLAUDE.md              ← BASE (minimal, ~30 lines)
+├── .mcp.json              ← MCP SERVERS (Chrome DevTools, Context7, Serena)
+├── settings.json          ← MARKETPLACES (5 configured)
+├── env.sh                 ← API KEYS (user-specific)
 ├── contexts/              ← DOMAIN MODULES (load as needed)
 │   ├── moodle-core.md        Moodle coding standards
 │   ├── moodle-ai.md          Moodle AI subsystem (4.5+)
@@ -27,12 +30,27 @@ Token-efficient, context-specific configuration for learning developers.
     └── dgx-h100-app/
 ```
 
-## Quick Start
+## Quick Start (Automated)
+
+**One-line install on any server:**
+```bash
+curl -sSL https://raw.githubusercontent.com/astoeffer/plugin-marketplace/master/setup-claude.sh | bash
+```
+
+Or manually:
+```bash
+git clone https://github.com/astoeffer/plugin-marketplace ~/.claude-marketplace
+~/.claude-marketplace/setup-claude.sh
+```
+
+## Quick Start (Manual)
 
 ### 1. Install Base Configuration
 ```bash
-# Copy base CLAUDE.md to user config
+# Copy all base files
 cp base/CLAUDE.md ~/.claude/CLAUDE.md
+cp base/.mcp.json ~/.claude/.mcp.json
+cp base/settings.json ~/.claude/settings.json
 
 # Copy context modules
 cp -r contexts ~/.claude/contexts
@@ -209,28 +227,44 @@ Keep total context under 5K tokens for efficient operation.
 
 For centralized configuration across multiple remote servers:
 
-1. **Install on each server** (one-time):
+**One-line setup:**
 ```bash
-git clone https://github.com/astoeffer/plugin-marketplace ~/.claude-marketplace
-cp ~/.claude-marketplace/base/CLAUDE.md ~/.claude/CLAUDE.md
-cp ~/.claude-marketplace/base/.mcp.json ~/.claude/.mcp.json
-cp -r ~/.claude-marketplace/contexts ~/.claude/contexts
+curl -sSL https://raw.githubusercontent.com/astoeffer/plugin-marketplace/master/setup-claude.sh | bash
 ```
 
-2. **Configure Claude Code settings** (`~/.claude/settings.json`):
-```json
-{
-  "extraKnownMarketplaces": [
-    "https://github.com/astoeffer/plugin-marketplace.git"
-  ],
-  "enabledPlugins": ["moodle-dev-pro@astoeffer", "ai-app-dev@astoeffer"]
-}
-```
+Then add your API keys to `~/.claude/env.sh` and source it.
 
-3. **Set API keys** (in `.bashrc` or `.zshrc`):
+## Configured Marketplaces
+
+The `settings.json` includes 5 marketplaces:
+
+| Marketplace | Repository | Purpose |
+|-------------|------------|---------|
+| anthropics-claude-code | anthropics/claude-code | Official: PR review, commits, security |
+| anthropics-skills | anthropics/skills | Document processing (PDF, XLSX, DOCX) |
+| wshobson-agents | wshobson/agents | 66 plugins, 87 agents, full dev lifecycle |
+| diegocconsolini-claudeskillcollection | diegocconsolini/ClaudeSkillCollection | Security, GDPR, smart extractors |
+| astoeffer-plugins | astoeffer/plugin-marketplace | Moodle development tools |
+
+### Recommended Plugins for Learning Developers
+
 ```bash
-export CONTEXT7_API_KEY="ctx7sk-..."
-export TAVILY_API_KEY="tvly-dev-..."
+# Document handling (token-efficient extractors)
+/plugin install pdf-smart-extractor@diegocconsolini-claudeskillcollection
+/plugin install xlsx-smart-extractor@diegocconsolini-claudeskillcollection
+
+# Security & compliance
+/plugin install security-guidance@anthropics-claude-code
+/plugin install gdpr-auditor@diegocconsolini-claudeskillcollection
+
+# Development workflow
+/plugin install debugging-toolkit@wshobson-agents
+/plugin install git-pr-workflows@wshobson-agents
+/plugin install code-documentation@wshobson-agents
+
+# Moodle specific
+/plugin install moodle-dev-pro@astoeffer-plugins
+/plugin install ai-app-dev@astoeffer-plugins
 ```
 
 ## DGX H100 Development
